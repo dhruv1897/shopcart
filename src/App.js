@@ -1,5 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { Component } from "react"; 
+import "bootstrap/dist/css/bootstrap.min.css"; 
+import {faShoppingCart} from "@fortawesome/fontawesome-svg-core";
+import {fontAwesomeIcon} from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   return (
