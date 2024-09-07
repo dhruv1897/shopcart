@@ -60,19 +60,18 @@ class App extends Component {
     this.setState({ cartTotal: total });
   };
 
-render() {
+  render() {
   return (
-    <div className="container mt-5" style={{backgroundColor:"lightblue"}}>
-      <div>
-      <h1 className="text-left mb-2 white">Shop to React</h1>
-      </div>
-      <div>
-          <FontAwesomeIcon icon={faShoppingCart} className="right"/>
+    <div className="container mt-5" style={{ backgroundColor: 'lightblue' }}>
+      <div className="row">
+        <div>
+          <h1 className="text-left" style={{margin:"5px"}}>Shop to React</h1>
+        <span><FontAwesomeIcon icon={faShoppingCart} className="right" /></span>
           <span>
             {this.state.cartTotal > 0 ? this.state.cartTotal : "0"} items
           </span>
-      
-      </div>
+          </div>
+          </div>
       <div>
         {Object.keys(this.state.items).map((item) => (
           <div key={item}>
