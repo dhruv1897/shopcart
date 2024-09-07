@@ -75,25 +75,25 @@ render() {
           <div key={item}>
             <div>
               <div>
-               <ListGroup>
+              <ListGroup>
                <ListGroupItem>
-                <h5 className="card-title">{this.state.items[item].name}</h5>
+                <h5 className="img">{this.state.items[item].name}</h5>
                 <img
                   src={this.state.items[item].image}
                   alt={this.state.items[item].name}
-                  className="img-fluid"
+                  style={{width: '100px'}}
                 />
                   <input
                     type="number"
                     className="form-control"
                     min="0"
+                    style={{widht: '100px'}}
                     value={this.state.items[item].quantity}
-                    onChange={(e) =>
-                      this.handleQuantityChange(
-                        item,
-                        parseInt(e.target.value)
-                      )
-                    }
+                    // onChange={(e) =>
+                    //   this.handleQuantityChange(
+                    //     item,
+                    //     parseInt(e.target.value)
+                    //   )
                   />
                   <div className="input-group mt-3">
                   <div className="input-group-prepend">
@@ -101,7 +101,7 @@ render() {
                   </div>
                 </div>
                 </ListGroupItem>
-                </ListGroup> 
+              </ListGroup> 
               </div>
             </div>
           </div>
