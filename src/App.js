@@ -51,15 +51,6 @@ class App extends Component {
     });
   };
 
-  calculateCartTotal = () => {
-    let total = 0;
-    for (const item in this.state.items) {
-      total +=
-        this.state.items[item].quantity * this.state.items[item].price;
-    }
-    this.setState({ cartTotal: total });
-  };
-
   render() {
   return (
     <div className="container mt-5" style={{ backgroundColor: 'lightblue' }}>
@@ -92,11 +83,6 @@ class App extends Component {
                     min="0"
                     style={{padding: '2px', width: '30px'}}
                     value={this.state.items[item].quantity}
-                    // onChange={(e) =>
-                    //   this.handleQuantityChange(
-                    //     item,
-                    //     parseInt(e.target.value)
-                    //   )
                   />
                   <div className="input-group mt-3">
                   <div className="input-group-prepend">
