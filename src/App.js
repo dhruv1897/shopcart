@@ -62,13 +62,16 @@ class App extends Component {
 
 render() {
   return (
-    <div className="container blue mt-5 col">
-      <h1 className="text-left mb-2">Shop to React</h1>
+    <div className="container mt-5" style={{backgroundColor:"lightblue"}}>
       <div>
-          <FontAwesomeIcon icon={faShoppingCart} />
+      <h1 className="text-left mb-2 white">Shop to React</h1>
+      </div>
+      <div>
+          <FontAwesomeIcon icon={faShoppingCart} className="right"/>
           <span>
             {this.state.cartTotal > 0 ? this.state.cartTotal : "0"} items
           </span>
+      
       </div>
       <div>
         {Object.keys(this.state.items).map((item) => (
@@ -77,7 +80,8 @@ render() {
               <div>
               <ListGroup>
                <ListGroupItem>
-                <h5 className="img">{this.state.items[item].name}</h5>
+                <h5 className="img" style={{padding:"10px"}}>{this.state.items[item].name}</h5>
+                <div>
                 <img
                   src={this.state.items[item].image}
                   alt={this.state.items[item].name}
@@ -87,7 +91,7 @@ render() {
                     type="number"
                     className="form-control"
                     min="0"
-                    style={{widht: '100px'}}
+                    style={{padding: '2px', width: '30px'}}
                     value={this.state.items[item].quantity}
                     // onChange={(e) =>
                     //   this.handleQuantityChange(
@@ -97,7 +101,8 @@ render() {
                   />
                   <div className="input-group mt-3">
                   <div className="input-group-prepend">
-                    <span className="input-group-text">Quantity</span>              
+                    <span className="input-group-text" style={{width: '100px'}}>Quantity</span>              
+                  </div>
                   </div>
                 </div>
                 </ListGroupItem>
