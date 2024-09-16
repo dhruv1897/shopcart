@@ -1,8 +1,7 @@
-
 import React from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
 
-const DisplayProducts = ({ items, handleQuantityChange }) => {
+const DisplayProducts = ({ items, handleQuantityChange, handleShow }) => {
   return (
     <div>
       {Object.keys(items).map((item) => (
@@ -19,6 +18,7 @@ const DisplayProducts = ({ items, handleQuantityChange }) => {
                       src={items[item].image}
                       alt={items[item].name}
                       style={{ width: "100px" }}
+                      onClick={() => handleShow(items[item])}  
                     />
                     <input
                       type="number"

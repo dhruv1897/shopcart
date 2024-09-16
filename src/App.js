@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { products } from "./products";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { ListGroup, ListGroupItem } from "reactstrap";
-import { Modal } from 'react-bootstrap';
 import Navbar from './navbar';
 import DisplayProducts from './displayProducts';
-import { useState } from "react";
+import CartPage from './CartPage';
+import { Modal } from 'react-bootstrap';
 
 class App extends Component {
   constructor(props) {
@@ -47,64 +45,43 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container mt-5" style={{ backgroundColor: "lightblue" }}>
-        <Navbar cartTotal={this.state.cartTotal} />
-        {this.state.items.map((item, index) => (
-          <div key={index}>
-            <img src={item.image} onClick={() => this.handleShow(item)} />
-          </div>
-        ))}
-        <DisplayProducts
-          items={this.state.items}
-          handleQuantityChange={this.handleQuantityChange}
-        />
-        {/* <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>{this.state.showImge && this.state.showImge.desc}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            {this.state.showImge && (
-              <img
-                src={this.state.showImge.image}
-                width="200px"
-                alt={this.state.showImge.desc}
-                className="mx-2"
+      <Router>
+        <div className="container mt-5" style={{ backgroundColor: "lightblue" }}>
+          <Navbar cartTotal={this.state.cartTotal} />
+
+          <Routes>
+            <Route path="/" element={
+              <DisplayProducts
+                items={this.state.items}
+                handleQuantityChange={this.handleQuantityChange}
+                handleShow={this.handleShow}
               />
-            )}
-            {this.state.showImge && (
-              <p><span className="text-dark">Ratings: </span>{this.state.showImge.ratings}/5</p>
-            )}
-            {this.state.showImge && (
-              <p><span className="text-dark">Description: </span>{this.state.showImge.desc}</p>
-            )}
-          </Modal.Body>
-        </Modal> */}
+            } />
 
+            <Route path="/cart" element={<CartPage items={this.state.items} />} />
+          </Routes>
 
-<Modal show={this.state.show} onHide={this.handleClose}>
-  <Modal.Header closeButton>
-    <Modal.Title>{this.state.showImge && this.state.showImge.name}</Modal.Title>
-  </Modal.Header>
-  <Modal.Body>
-    {this.state.showImge && (
-      <img
-        src={this.state.showImge.image}
-        width="200px"
-        alt={this.state.showImge.name}
-        className="mx-2"
-      />
-    )}
-    {this.state.showImge && (
-      <p><span className="text-dark">Ratings: </span>{this.state.showImge.ratings}/5</p>
-    )}
-    {this.state.showImge && (
-      <p><span className="text-dark">Description: </span>{this.state.showImge.desc}</p>
-    )}
-  </Modal.Body>
-</Modal> 
-
-
-      </div>
+          <Modal show={this.state.show} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>{this.state.showImge && this.state.showImge.name}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {this.state.showImge && (
+                <>
+                  <img
+                    src={this.state.showImge.image}
+                    width="200px"
+                    alt={this.state.showImge.name}
+                    className="mx-2"
+                  />
+                  <p><span className="text-dark">Ratings: </span>{this.state.showImge.ratings}/5</p>
+                  <p><span className="text-dark">Description: </span>{this.state.showImge.desc}</p>
+                </>
+              )}
+            </Modal.Body>
+          </Modal>
+        </div>
+      </Router>
     );
   }
 }
