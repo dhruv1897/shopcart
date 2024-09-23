@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { products } from "./products";
 import Navbar from './navbar';
 import DisplayProducts from './displayProducts';
-import CartPage from './CartPage';
+import CartPage from './CartPage ';
+import Checkout from './Checkout'; 
 import { Modal } from 'react-bootstrap';
 
 class App extends Component {
@@ -57,6 +58,8 @@ class App extends Component {
                 handleShow={this.handleShow}
               />
             } />
+            <Route path="/cart" element={<CartPage items={this.state.items} />} />
+            <Route path="/checkout" element={<Checkout />} /> 
 
             <Route path="/cart" element={<CartPage items={this.state.items} />} />
           </Routes>
